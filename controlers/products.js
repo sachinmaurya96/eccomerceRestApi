@@ -94,7 +94,7 @@ exports.getAllProducts = async (req,res)=>{
       .skip(skip)
       .limit(Number(limit))
       .exec();
-      res.set("Total-Page ", totalPages)
+      res.set("Total-Page", totalPages)
     res.json(products);
   } catch (error) {
     res.status(500).json({ error: 'Error retrieving products' });
