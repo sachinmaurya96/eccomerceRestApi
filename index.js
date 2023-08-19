@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express")
 const mongoose = require("mongoose")
 const server = express()
@@ -6,7 +7,7 @@ const productRouter = require("./routes/Products")
 
 //middleweres
 server.use(express.json())
-server.use("/",productRouter.router)
+server.use("/product",productRouter.router)
 
 
 
@@ -17,7 +18,7 @@ server.get("/",(req,res)=>{
 
 main().catch((err)=>console.log(err))
 async function main(){
-    await mongoose.connect("mongodb://0.0.0.0:27017/restApi")
+    await mongoose.connect(process.env.MONGODB_URL)
     console.log("database connected")
 }
 server.listen(8080,()=>{
